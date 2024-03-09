@@ -1,0 +1,38 @@
+# Define a function to generate Fibonacci numbers up to n
+def fibonacci(n):
+    """
+    Generates the Fibonacci sequence up to the nth number.
+    
+    Parameters:
+    n (int): The length of the Fibonacci sequence to generate.
+    
+    Yields:
+    int: The next number in the Fibonacci sequence.
+    """
+    a, b = 0, 1  # Initialize the first two Fibonacci numbers
+    for _ in range(n):
+        yield a  # Yield the current number in the sequence
+        a, b = b, a + b  # Update values for the next iteration
+
+# Main loop to interact with the user
+while True:
+    # Prompt the user for input or offer an option to exit
+    user_input = input("Enter the length of the Fibonacci sequence to generate (or type 'exit' to quit): ")
+    
+    if user_input.lower() == 'exit':  # Check if the user wants to exit
+        print("Exiting the program.")
+        break  # Break out of the loop to end the program
+    
+    try:
+        length = int(user_input)  # Attempt to convert the input to an integer
+        if length < 0:
+            print("Please enter a positive integer.")
+            continue  # Skip to the next iteration for valid input
+        # Call the fibonacci function and print the sequence
+        print(list(fibonacci(length)))  # Generates and prints the Fibonacci sequence
+    except ValueError:  # Handle the case where the input is not an integer
+        print("Please enter a valid integer or 'exit' to quit.")
+
+# This improved version of the Fibonacci sequence generator allows users
+# to generate sequences of custom lengths. It provides a user-friendly
+# interface with the option to exit the program at any time.
