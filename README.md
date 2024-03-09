@@ -1,3 +1,8 @@
 # Python-code-Algorithms-
-Divers Python code to learn the language
-This repository list different code, for divers applications with python programming language.
+This repository lists various Python code snippets to aid in learning the language. 
+It includes diverse applications utilizing the Python programming language.
+
+
+
+
+
