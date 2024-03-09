@@ -83,3 +83,30 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+####################################################################################
+
+# To test this program used these values
+"""
+Dijkstra's Algorithm for Computing Shortest Paths
+Enter the number of edges: 5
+Enter the edges in the format 'u v weight' (without quotes), each on a new line:
+A B 4
+A C 2
+B C 5
+B D 10
+C D 3
+Enter the source vertex: A
+
+Output Console:
+Shortest paths from vertex A:
+Distance to A: 0
+Distance to D: 5.0
+Distance to C: 2.0
+Distance to B: 4.0
+
+and the graph should be displazyed as well
+
+Process finished with exit code 0
+
+"""
