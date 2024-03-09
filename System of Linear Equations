@@ -1,0 +1,51 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+def solve_linear_equations(a, b, c, d, e, f):
+    determinant = a * d - b * c
+    if determinant == 0:
+        return None, None
+    x = (e * d - b * f) / determinant
+    y = (a * f - e * c) / determinant
+    return x, y
+
+
+def plot_system(a, b, c, d, e, f, x_solution, y_solution):
+    x_values = np.linspace(-10, 10, 400)
+    y_values_1 = (e - a * x_values) / b if b != 0 else np.full(x_values.shape, e / a)  # Avoid division by zero
+    y_values_2 = (f - c * x_values) / d if d != 0 else np.full(x_values.shape, f / c)
+
+    plt.figure(figsize=(8, 6))
+    plt.plot(x_values, y_values_1, '-g', label=f'{a}x + {b}y = {e}')
+    plt.plot(x_values, y_values_2, '-b', label=f'{c}x + {d}y = {f}')
+    plt.plot(x_solution, y_solution, 'ro', label='Solution')
+
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.axhline(0, color='black', linewidth=0.5)
+    plt.axvline(0, color='black', linewidth=0.5)
+    plt.grid(color='gray', linestyle='--', linewidth=0.5)
+    plt.legend()
+    plt.title('System of Linear Equations')
+    plt.show()
+
+
+while True:
+    user_input = input(
+        "Enter coefficients 'a, b, c, d, e, f' for equations 'ax + by = e' and 'cx + dy = f', or type 'exit': ")
+
+    if user_input.lower() == 'exit':
+        print("Exiting the program.")
+        break
+
+    try:
+        a, b, c, d, e, f = map(float, user_input.split())
+        x, y = solve_linear_equations(a, b, c, d, e, f)
+
+        if x is None and y is None:
+            print("The system of equations has no unique solution.")
+        else:
+            print(f"The solution is x = {x}, y = {y}")
+            plot_system(a, b, c, d, e, f, x, y)
+    except ValueError:
+        print("Invalid input. Please enter 6 numbers separated by spaces, or 'exit' to quit.")
