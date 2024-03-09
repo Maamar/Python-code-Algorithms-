@@ -1,0 +1,37 @@
+# Define a function to check if a number is prime
+def is_prime(n):
+    # Numbers less than 2 are not prime
+    if n <= 1:
+        return False
+    # Check divisibility for numbers from 2 to the square root of n
+    for i in range(2, int(n**0.5) + 1):
+        # If n is divisible by any number in this range, it's not prime
+        if n % i == 0:
+            return False
+    # If no divisors were found, n is prime
+    return True
+
+# Main loop to continuously prompt user input
+while True:
+    # Prompt the user to enter a number or 'exit' to quit the program
+    user_input = input("Enter a number to check if it's prime (or type 'exit' to quit): ")
+    
+    # Check if the user wants to exit the program
+    if user_input.lower() == 'exit':
+        print("Exiting the program.")
+        break  # Exit the while loop, thus ending the program
+    
+    # Attempt to convert the input into an integer and check if it's prime
+    try:
+        num = int(user_input)  # Convert input to integer
+        # Use the is_prime function to check primality
+        if is_prime(num):
+            print(f"{num} is a prime number.")
+        else:
+            print(f"{num} is not a prime number.")
+    except ValueError:  # Catch and handle non-integer inputs
+        print("Please enter a valid integer or 'exit' to quit.")
+
+# This program allows users to check the primality of numbers continuously
+# until they decide to exit by typing 'exit'. It handles invalid inputs gracefully
+# by prompting the user to enter a valid integer or the exit command.
